@@ -248,6 +248,49 @@
           null
         ]
       },
+      "/Users/igormagalhaes/Desktop/turing/2mod/projects/premier_league/spec/features/teams/show_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/2mod/projects/premier_league/spec/models/player_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/2mod/projects/premier_league/app/models/player.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/2mod/projects/premier_league/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
       "/Users/igormagalhaes/Desktop/turing/2mod/projects/premier_league/app/models/team.rb": {
         "lines": [
           1,
@@ -271,6 +314,6 @@
         ]
       }
     },
-    "timestamp": 1706744064
+    "timestamp": 1706745357
   }
 }
