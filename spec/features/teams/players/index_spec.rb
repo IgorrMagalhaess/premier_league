@@ -7,10 +7,23 @@ RSpec.describe 'Team Players page' do
       @de_bruyne = @man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: false)
    end
 
-   it 'can see all the players associated with that parent with each childs attributes' do
+   it 'can see all the players associated with that parent' do
       visit "/teams/#{@man_city.id}/players"
 
       expect(page).to have_content(@ederson.name)
       expect(page).to have_content(@de_bruyne.name)
+   end
+
+   it 'can see the players associated with that parents attributes' do
+      visit "/teams/#{@man_city.id}/players"
+
+      expect(page).to have_content(@ederson.position)
+      expect(page).to have_content(@ederson.injuried)
+      expect(page).to have_content(@ederson.jersey_number)
+
+
+      expect(page).to have_content(@de_bruyne.position)
+      expect(page).to have_content(@de_bruyne.injuried)
+      expect(page).to have_content(@de_bruyne.jersey_number)
    end
 end

@@ -5,4 +5,4 @@
 <p>Position: <%= @player.position %></p>
 <p>Jersey Number: <%= @player.jersey_number %></p>
 <p>Injuried: <%= @player.injuried %></p>
-<p><a href="/teams/<%= @player.team_id %>">Team: <%= @player.team_id %></a></p>
+<p>Team: <a href="/teams/<%= @player.team_id %>"><%= @player.team_id %></a></p>
