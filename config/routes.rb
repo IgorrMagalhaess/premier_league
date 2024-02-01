@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/", to: "welcome#index"
   get '/teams', to: "teams#index"
-  get '/teams/1', to: "teams#show"
+  get '/teams/:id', to: "teams#show"
 end
