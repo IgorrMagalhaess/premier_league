@@ -1,0 +1,8 @@
+<a href="/players">Players Index</a>
+
+<h1><%= @player.name %></h1>
+
+<p>Position: <%= @player.position %></p>
+<p>Jersey Number: <%= @player.jersey_number %></p>
+<p>Injuried: <%= @player.injuried %></p>
+<p><a href="/teams/<%= @player.team_id %>">Team: <%= @player.team_id %></a></p>
