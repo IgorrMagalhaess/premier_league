@@ -22,7 +22,10 @@ RSpec.describe "Teams index page", type: :feature do
    it 'show teams ordered by most recent' do
       visit "/teams"
 
-      expect(page).to have_text(/Tottenham Hotspur FC.*Manchester City/m)
+      this = @tottenham.name
+      that = @man_city.name
+
+      expect(this).to appear_before(that)
    end
 
    it "can see when all the teams were created" do
