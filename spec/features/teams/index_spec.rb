@@ -43,7 +43,7 @@ RSpec.describe "Teams index page", type: :feature do
    it 'has a link to the players index' do
       visit "/teams"
 
-      click_button "Players Index"
+      click_on "Players Index"
 
       expect(page).to have_content("Players Index")
    end
