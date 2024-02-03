@@ -23,4 +23,8 @@ class TeamsController < ApplicationController
       
       redirect_to '/teams'
    end
+
+   def edit
+      @team = Team.find(params[:id])
+   end
 end
