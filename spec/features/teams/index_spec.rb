@@ -15,10 +15,6 @@ RSpec.describe "Teams index page", type: :feature do
       expect(page).to have_content(@tottenham.name)
    end
 
-   # As a visitor
-   # When I visit the parent index,
-   # I see that records are ordered by most recently created first
-   # And next to each of the records I see when it was created
    it 'show teams ordered by most recent' do
       visit "/teams"
 
@@ -36,10 +32,6 @@ RSpec.describe "Teams index page", type: :feature do
       expect(page).to have_content(@tottenham.created_at)
    end
 
-    # As a visitor
-   # When I visit any page on the site
-   # Then I see a link at the top of the page that takes me to the Child Index
-
    it 'has a link to the players index' do
       ederson = @man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
       de_bruyne = @man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: false)
@@ -52,4 +44,29 @@ RSpec.describe "Teams index page", type: :feature do
       expect(page).to have_content(ederson.name)
       expect(page).to have_content(de_bruyne.name)
    end
+
+   # As a visitor
+   # When I visit the Parent Index page
+   # Then I see a link to create a new Parent record, "New Parent"
+   # When I click this link
+   # Then I am taken to '/parents/new' where I  see a form for a new parent record
+   # When I fill out the form with a new parent's attributes:
+   # And I click the button "Create Parent" to submit the form
+   # Then a `POST` request is sent to the '/parents' route,
+   # a new parent record is created,
+   # and I am redirected to the Parent Index page where I see the new Parent displayed.  
+
+   it 'has a link to create a new Team record' do
+         click_on "New Team"
+
+         fill_in 'Name', with: 'Arsenal FC'
+         fill_in 'State', with: 'Holloway'
+         fill_in 'Position', with: 2
+         fill_in 'On the Market', with: true
+
+         click_button 'Submit'
+         expect(page).to have_content 'Arsenal FC'
+         expect(page).to have_content 'Position: 2'
+         expect(page).to have_content 'Holloway'
+      end
 end
