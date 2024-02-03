@@ -1,4 +1,6 @@
-<a href="/teams">Team Index</a>
+<a href="/teams"><button type="button">Team Index</button></a>
+<a href="/players"><button type="button">Players Index</button></a>
+
 
 <h1><%= @team.name %></h1>
 
@@ -6,4 +8,5 @@
 <p>Position: <%= @team.champ_position %></p>
 <p>On the market: <%= @team.hiring_players %></p>
 
-<a href="/teams/<%= @team.id %>/players">Players</a>
+<p><a href="/teams/<%= @team.id %>/players">Players</a>: <%= @count %></p>
+
