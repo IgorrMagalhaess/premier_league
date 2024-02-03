@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Team Players page' do
+RSpec.describe 'Team Players page', type: :feature do
    before(:each) do
       @man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
       @ederson = @man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
