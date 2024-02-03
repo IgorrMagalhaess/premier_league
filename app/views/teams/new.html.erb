@@ -1,0 +1,64 @@
+<style>
+.team-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+</style>
+
+<form action="/teams" method="post" class="team-form">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class="form-group">
+   <h1>New Team</h1>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name">
+  </div>
+  <div class="form-group">
+    <label for="position">Position:</label>
+    <input type="text" name="position" id="position">
+  </div>
+  <div class="form-group">
+    <label for="state">State:</label>
+    <textarea name="state" id="state"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="on-market">On the Market:</label>
+    <select name="on_market" id="on-market">
+      <option value="true">TRUE</option>
+      <option value="false">FALSE</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Submit">
+  </div>
+</form>
