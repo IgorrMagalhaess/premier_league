@@ -18,7 +18,7 @@ RSpec.describe 'the players show page', type: :feature do
       man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
       ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
 
-      visit "/teams/#{man_city.id}"
+      visit "/players/#{ederson.id}"
 
       click_on "Players Index"
 
