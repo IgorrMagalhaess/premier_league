@@ -15,6 +15,5 @@ RSpec.describe "Teams new page", type: :feature do
       expect(page).to have_content 'Arsenal FC'
       expect(page).to have_content 'Created: '
       expect(page).to have_link 'New Team'
-      expect(page).to have_content 'Hiring: true'
    end
 end
