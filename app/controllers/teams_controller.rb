@@ -14,9 +14,9 @@ class TeamsController < ApplicationController
    def create
       teams = Team.new({
          name: params[:name],
-         champ_position: params[:position],
+         champ_position: params[:champ_position],
          state: params[:state],
-         hiring_players: params[:on_market]
+         hiring_players: params[:hiring_players]
          })
       
       teams.save
@@ -33,7 +33,7 @@ class TeamsController < ApplicationController
 
       team.update({
          name: params[:name],
-         champ_position: params[:position],
+         champ_position: params[:champ_position],
          state: params[:state],
          hiring_players: params[:hiring_players]
         })

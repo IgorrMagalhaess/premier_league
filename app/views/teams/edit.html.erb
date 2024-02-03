@@ -1,65 +1,22 @@
-
-
-<style>
-   .team-form {
-     max-width: 400px;
-     margin: 0 auto;
-   }
-   
-   .form-group {
-     margin-bottom: 15px;
-   }
-   
-   label {
-     display: block;
-   }
-   
-   input[type="text"],
-   textarea,
-   select {
-     width: 100%;
-     padding: 5px;
-     border: 1px solid #ccc;
-     border-radius: 4px;
-   }
-   
-   input[type="submit"] {
-     padding: 8px 12px;
-     background-color: #007bff;
-     color: #fff;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-     font-size: 16px;
-   }
-   
-   input[type="submit"]:hover {
-     background-color: #0056b3;
-   }
-   </style>
-   
-
-   <form action="/teams/<%= @team.id %>" method="post">
-     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-     <input type="hidden" name="_method" value="PATCH" />
-     <div class="form-group">
-         <h1>Edit Team</h1>
-         <input type='text' name='name' value="<%= @team.name %>"/><br/>
-     </div>
-     <div class="form-group">
-         <label for="position">Position:</label>
-         <input type='text' name='position' value="<%= @team.champ_position %>"/><br/>
-     </div>
-     <div class="form-group">
-         <label for="state">State:</label>
-         <input type='text' name='state' value="<%= @team.state %>"/><br/>
-     </div>
-     <div class="form-group">
-         <label for="hiring_players">Hiring:</label>
-         <input type='text' name='hiring_players' value="<%= @team.hiring_players %>"/><br/>
-     </div>
-     <div class="form-group">
-       <input type="submit" value="Submit">
-     </div>
-   </form>
-   
+<form action="/teams/<%= @team.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h1>Edit Team</h1>
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="<%= @team.name %>">
+  </p>
+  <p>
+    <label for="state">State:</label>
+    <input type="text" id="state" name="state" value="<%= @team.state %>">
+  </p>
+  <p>
+    <label for="champ_position">Position:</label>
+    <input type="text" id="champ_position" name="champ_position" value="<%= @team.champ_position %>">
+  </p>
+  <p>
+    <label for="hiring_players">Hiring:</label>
+    <input type="text" id="hiring_players" name="hiring_players" value="<%= @team.hiring_players %>">
+  </p>
+  <input type="submit" value="Submit">
+</form>
