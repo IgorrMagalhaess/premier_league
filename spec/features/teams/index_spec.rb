@@ -66,6 +66,6 @@ RSpec.describe "Teams index page", type: :feature do
       expect(page).to have_content 'Name:'
       expect(page).to have_content 'State:'
       expect(page).to have_content 'Position:'
-      expect(page).to have_content 'On the Market:'
+      expect(page).to have_content 'Hiring:'
    end
 end

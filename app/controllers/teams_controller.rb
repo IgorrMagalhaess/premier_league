@@ -12,17 +12,15 @@ class TeamsController < ApplicationController
    end
 
    def create
-      def create
-         teams = Team.new({
-           name: params[:name],
-           champ_position: params[:position],
-           state: params[:state],
-           hiring_players: params[:on_market].downcase
-           })
-       
-         teams.save
-       
-         redirect_to '/teams'
-       end
+      teams = Team.new({
+         name: params[:name],
+         champ_position: params[:position],
+         state: params[:state],
+         hiring_players: params[:on_market]
+         })
+      
+      teams.save
+      
+      redirect_to '/teams'
    end
 end
