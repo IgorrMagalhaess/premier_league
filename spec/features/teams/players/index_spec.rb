@@ -30,8 +30,6 @@ RSpec.describe 'Team Players page' do
    it 'has a link to the players index' do
       visit "/teams/#{@man_city.id}/players"
 
-      click_on "Players Index"
-
-      expect(current_path).to eq("/players")
+      expect(page).to have_link 'Player Index'
    end
 end

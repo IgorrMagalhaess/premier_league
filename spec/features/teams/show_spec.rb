@@ -31,6 +31,8 @@ RSpec.describe "Team index page", type: :feature do
 
       visit "/teams/#{man_city.id}"
 
+      expect(page).to have_link 'Player Index'
+      
       click_on "Players Index"
 
       expect(current_path).to eq("/players")
