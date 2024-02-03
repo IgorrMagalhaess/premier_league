@@ -45,6 +45,7 @@ RSpec.describe 'Team Players page' do
 
    it 'has a link to the teams index' do
       man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
+      ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
       liverpool = Team.create!(name: "Liverpool FC", state: "Liverpool", champ_position: 5, hiring_players: true)
       tottenham = Team.create!(name: "Tottenham Hotspur FC", state: "Tottenham", champ_position: 8, hiring_players: true)
 

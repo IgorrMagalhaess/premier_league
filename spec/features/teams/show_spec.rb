@@ -47,10 +47,11 @@ RSpec.describe "Team index page", type: :feature do
 
    it 'has a link to the teams index' do
       man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
+      ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
       liverpool = Team.create!(name: "Liverpool FC", state: "Liverpool", champ_position: 5, hiring_players: true)
       tottenham = Team.create!(name: "Tottenham Hotspur FC", state: "Tottenham", champ_position: 8, hiring_players: true)
 
-      visit "/players/#{ederson.id}"
+      visit "/teams/#{man_city.id}"
 
       click_on "Teams Index", match: :first
 
@@ -58,5 +59,19 @@ RSpec.describe "Team index page", type: :feature do
       expect(page).to have_content(man_city.name)
       expect(page).to have_content(liverpool.name)
       expect(page).to have_content(tottenham.name)
+   end
+
+   it 'has a link to the teams index' do
+      man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
+      ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
+      de_bruyne = man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: false)
+
+      visit "/teams/#{man_city.id}"
+
+      click_on "Players"
+
+      expect(page).to have_content(man_city.name)
+      expect(page).to have_content(ederson.name)
+      expect(page).to have_content(de_bruyne.name)
    end
 end
