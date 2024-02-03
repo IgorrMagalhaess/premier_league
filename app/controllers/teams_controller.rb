@@ -35,7 +35,7 @@ class TeamsController < ApplicationController
          name: params[:name],
          champ_position: params[:position],
          state: params[:state],
-         hiring_players: params[:on_market]
+         hiring_players: params[:hiring_players]
         })
 
       team.save
