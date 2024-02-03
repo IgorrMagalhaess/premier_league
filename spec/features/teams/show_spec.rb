@@ -22,6 +22,19 @@ RSpec.describe "Team index page", type: :feature do
       expect(current_path).to eq("/teams/#{man_city.id}/players")
    end
 
+   # As a visitor
+   # When I visit any page on the site
+   # Then I see a link at the top of the page that takes me to the Child Index
+
+   it 'has a link to the players index' do
+      man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
+
+      visit "/teams/#{man_city.id}"
+
+      click_on "Players Index"
+
+      expect(current_path).to eq("/players")
+   end
       # User Story 7, Parent Child Count
 
       # As a visitor
