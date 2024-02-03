@@ -33,7 +33,7 @@ RSpec.describe "Team index page", type: :feature do
 
       visit "/teams/#{man_city.id}"
 
-      click_button "Players Index"
+      click_on "Players Index", match: :first
 
       expect(page).to have_content(ederson.name)
       expect(page).to have_content(de_bruyne.name)

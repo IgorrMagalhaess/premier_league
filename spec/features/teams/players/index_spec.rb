@@ -32,7 +32,7 @@ RSpec.describe 'Team Players page' do
 
       expect(page).to have_content('Players Index')
 
-      click_button "Players Index"
+      click_on "Players Index"
 
       expect(page).to have_content("Players Index")
    end

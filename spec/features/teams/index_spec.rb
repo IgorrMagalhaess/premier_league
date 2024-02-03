@@ -41,10 +41,15 @@ RSpec.describe "Teams index page", type: :feature do
    # Then I see a link at the top of the page that takes me to the Child Index
 
    it 'has a link to the players index' do
+      ederson = @man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
+      de_bruyne = @man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: false)
+
       visit "/teams"
 
-      click_on "Players Index"
+      click_on "Players Index", match: :first
 
       expect(page).to have_content("Players Index")
+      expect(page).to have_content(ederson.name)
+      expect(page).to have_content(de_bruyne.name)
    end
 end
