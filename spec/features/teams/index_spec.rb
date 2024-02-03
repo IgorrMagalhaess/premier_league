@@ -35,4 +35,16 @@ RSpec.describe "Teams index page", type: :feature do
       expect(page).to have_content(@liverpool.created_at)
       expect(page).to have_content(@tottenham.created_at)
    end
+
+    # As a visitor
+   # When I visit any page on the site
+   # Then I see a link at the top of the page that takes me to the Child Index
+
+   it 'has a link to the players index' do
+      visit "/teams"
+
+      click_on "Players Index"
+
+      expect(current_path).to eq("/players")
+   end
 end
