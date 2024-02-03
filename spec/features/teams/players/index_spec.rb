@@ -26,4 +26,6 @@ RSpec.describe 'Team Players page' do
       expect(page).to have_content(@de_bruyne.injuried)
       expect(page).to have_content(@de_bruyne.jersey_number)
    end
+
+   
 end
