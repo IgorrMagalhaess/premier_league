@@ -30,6 +30,10 @@ RSpec.describe 'Team Players page' do
    it 'has a link to the players index' do
       visit "/teams/#{@man_city.id}/players"
 
-      expect(page).to have_link 'Player Index'
+      expect(page).to have_content('Players Index')
+
+      click_button "Players Index"
+
+      expect(page).to have_content("Players Index")
    end
 end

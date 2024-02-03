@@ -20,7 +20,7 @@ RSpec.describe 'the players show page', type: :feature do
 
       visit "/players/#{ederson.id}"
 
-      click_button "Players Index"
+      click_on "Players Index"
 
       expect(page).to have_content("Players Index")
    end
