@@ -15,8 +15,8 @@ class TeamsController < ApplicationController
       def create
          teams = Team.new({
            name: params[:name],
-           champ_position: params[:position]
-           state: params[:state]
+           champ_position: params[:position],
+           state: params[:state],
            hiring_players: params[:on_market]
            })
        
