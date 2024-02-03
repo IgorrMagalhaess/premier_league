@@ -28,12 +28,18 @@ RSpec.describe 'Team Players page' do
    end
 
    it 'has a link to the players index' do
+      liverpool = Team.create!(name: "Liverpool FC", state: "Liverpool", champ_position: 5, hiring_players: true)
+      salah = liverpool.players.create!(name: "Mohamed Salah", position: "Forward", jersey_number: 11, injuried: false)
+      alisson = liverpool.players.create!(name: "Alisson Becker", position: "Goalkeeper", jersey_number: 1, injuried: false)
+      
       visit "/teams/#{@man_city.id}/players"
 
       expect(page).to have_content('Players Index')
 
-      click_on "Players Index"
+      click_on "Players Index", match: :first
 
       expect(page).to have_content("Players Index")
+      expect(page).to have_content(salah.name)
+      expect(page).to have_content(alisson.name)
    end
 end
