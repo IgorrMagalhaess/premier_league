@@ -27,5 +27,11 @@ RSpec.describe 'Team Players page' do
       expect(page).to have_content(@de_bruyne.jersey_number)
    end
 
-   
+   it 'has a link to the players index' do
+      visit "/teams/#{@man_city.id}/players"
+
+      click_on "Players Index"
+
+      expect(current_path).to eq("/players")
+   end
 end
