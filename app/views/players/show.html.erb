@@ -1,10 +1,14 @@
-<a href="/teams"><button type="button">Team Index</button></a>
+<a href="/"><button type="button">Premier League Home</button></a>
 <a href="/players"><button type="button">Players Index</button></a>
 <a href="/teams"><button type="button">Teams Index</button></a>
+<hr class="solid">
 
 <h1><%= @player.name %></h1>
-
-<p>Position: <%= @player.position %></p>
-<p>Jersey Number: <%= @player.jersey_number %></p>
-<p>Injuried: <%= @player.injuried %></p>
-<p>Team: <a href="/teams/<%= @player.team_id %>"><%= @player.team_id %></a></p>
+<h2>Team: <%= @player.team.name %></h2>
+   <ul>
+      </li><h3>Position: <%= @player.position %></h3></li>
+      </li><h3>Jersey Number: <%= @player.jersey_number %></h3></li>
+      </li><h3>Injuried: <%= @player.injuried? %></h3></li>
+   </ul>
+   <h4><a href=<%= "#{@player.id}/edit" %> title="Edit player">Edit <%= @player.name %></a></h4>
+   <h4><%= link_to "Delete #{@player.name}", "/players/#{@player.id}", method: :delete %></h4>

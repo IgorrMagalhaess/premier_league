@@ -1,0 +1,20 @@
+<a href="/"><button type="button">Premier League Home</button></a>
+<a href="/players"><button type="button">Players Index</button></a>
+<a href="/teams"><button type="button">Teams Index</button></a>
+<hr class="solid">
+
+<h1>Add Player to <%= "#{@team.name}" %></h1>
+
+<form action=<%= "/teams/#{@team.id}/players" %>  method="post">
+    <input type="hidden" team_id=<% @team.id %>>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>Player Name:</p>
+    <input type='text' name='name' /><br/>
+    <p>Player Position:</p>
+    <input type='text' name='position'/><br/>
+    <p>Jersey Number:</p>
+    <input type='number' name='jersey_number'/><br/>
+    <p>Injuried:</p>
+    <input type='text' name='injuried' placeholder='e.g. true or false'/><br/><br>
+    <button type="submit" name="create_player">Add Player</button></form>
+</form>

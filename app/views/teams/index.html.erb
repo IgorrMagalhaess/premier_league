@@ -1,11 +1,21 @@
-<a href="/teams"><button type="button">Teams Index</button></a>
+<a href="/"><button type="button">Premier League Home</button></a>
 <a href="/players"><button type="button">Players Index</button></a>
-<a href="/teams/new"><button type="button">New Team</button></a>
+<a href="/teams"><button type="button">Teams Index</button></a>
+<hr class="solid">
 
+<h4><%= link_to "Sort Alphabetically", "/teams.sort(alpha)" %></h4>
 
-<h1>Teams</h1>
+<h1>Premier League Teams</h1>
 
 <% @teams.each do |team| %>
-   <h3><a href="/teams/<%= team.id %>"><%= team.name %></a></h3>
-   <p>Created: <%= team.created_at %></p><br/>
+   <h3><a href=<%= request.original_url + "/#{team.id}" %>><%= team.name %></a></h3>
+   <p>Created at: <%= team.created_at %></p>
+   <ul>
+      <li><p>Premier League Position: <%= team.champ_position %></p></li>
+      <li><p>On the Market: <%= team.hiring? %></p></li>
+   </ul>
+   <h4><a href=<%= request.original_url + "/#{team.id}/edit" %>>Edit <%= team.name %></a></h4>
+   <h4><%= link_to "Delete #{team.name}", "/teams/#{team.id}", method: :delete %></h4>
+   
+   <br/>
 <% end %>

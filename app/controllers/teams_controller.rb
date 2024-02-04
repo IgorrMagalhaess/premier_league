@@ -1,6 +1,10 @@
 class TeamsController < ApplicationController
    def index
-      @teams = Team.ordered_teams
+      if params[:sort]
+         @teams = Team.sort(params[:sort])
+      else
+         @teams = Team.ordered_teams
+      end
    end
 
    def show
@@ -12,16 +16,9 @@ class TeamsController < ApplicationController
    end
 
    def create
-      teams = Team.new({
-         name: params[:name],
-         champ_position: params[:champ_position],
-         state: params[:state],
-         hiring_players: params[:hiring_players]
-         })
+      team = Team.create(team_params)
       
-      teams.save
-      
-      redirect_to '/teams'
+      redirect_to "/teams/#{team.id}"
    end
 
    def edit
@@ -31,15 +28,19 @@ class TeamsController < ApplicationController
    def update
       team = Team.find(params[:id])
 
-      team.update({
-         name: params[:name],
-         champ_position: params[:champ_position],
-         state: params[:state],
-         hiring_players: params[:hiring_players]
-        })
-
-      team.save
+      team.update(team_params)
 
       redirect_to "/teams/#{team.id}"
+    end
+
+    def destroy
+      team = Team.find(params[:id])
+      team.destroy
+
+      redirect_to "/teams"
+    end
+
+    def team_params
+      params.permit(:name, :champ_position, :state, :hiring_players)
     end
 end

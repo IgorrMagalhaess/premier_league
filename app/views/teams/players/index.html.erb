@@ -1,0 +1,15 @@
+<a href="/"><button type="button">Premier League Home</button></a>
+<a href="/players"><button type="button">Players Index</button></a>
+<a href="/teams"><button type="button">Teams Index</button></a>
+<hr class="solid">
+
+<h1><%= @team.name %>'s Players</h1>
+    <% @team.players.each do |player| %>
+        <h3><%= player.name %></h3>
+        <ul>
+            <li><p>Position: <%= player.position %></p></li>
+            <li><p>Jersey Number: <%= player.jersey_number %></p></li>
+            <li><p>Injuried: <%= player.injuried? %></p></li>
+        </ul>
+    <% end %>
+<h4><a href=<%= "players/new" %> title="Add Players to Team">Add Player to <%= @team.name %></a></h4>
