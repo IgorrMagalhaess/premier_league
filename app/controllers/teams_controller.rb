@@ -31,15 +31,21 @@ class TeamsController < ApplicationController
       team.update(team_params)
 
       redirect_to "/teams/#{team.id}"
-    end
+   end
 
-    def destroy
+   def destroy
       Team.destroy(params[:id])
 
       redirect_to "/teams"
-    end
+   end
 
-    def team_params
+   def team_params
       params.permit(:name, :champ_position, :state, :hiring_players)
-    end
+   end
+
+   def self.sort(type)
+      if type == "alpha"
+         Team.order(name: ASC)
+      end
+   end
 end
