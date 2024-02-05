@@ -13,12 +13,7 @@ class PlayersController < ApplicationController
    end
 
    def create 
-      player = Player.create({
-         name: params[:name],
-         position: params[:position],
-         jersey_number: params[:jersey_number],
-         injuried: params[:injuried]
-      })
+      player = Player.create(player_params)
 
       redirect_to "/players"
    end
@@ -29,12 +24,7 @@ class PlayersController < ApplicationController
 
    def update
       player = Player.find(params[:id])
-      player.update({
-         name: params[:name],
-         position: params[:position],
-         jersey_number: params[:jersey_number],
-         injuried: params[:injuried]
-      })
+      player.update(player_params)
 
       redirect_to "/players/#{player.id}"
    end
@@ -44,5 +34,10 @@ class PlayersController < ApplicationController
       player.destroy
 
       redirect_to "/players"
+   end
+
+private
+   def player_params
+      params.permit(:name, :position, :jersey_number, :injuried)
    end
 end

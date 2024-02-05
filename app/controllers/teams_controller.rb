@@ -39,6 +39,7 @@ class TeamsController < ApplicationController
       redirect_to "/teams"
    end
 
+private
    def team_params
       params.permit(:name, :champ_position, :state, :hiring_players)
    end
