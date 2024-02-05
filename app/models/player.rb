@@ -8,4 +8,10 @@ class Player < ApplicationRecord
    def injuried?
       self.injuried ? "Yes" : "No"
    end
+
+   def self.sort_players(type)
+      if type == "alpha"
+         Player.order(name: :ASC)
+      end
+   end
 end

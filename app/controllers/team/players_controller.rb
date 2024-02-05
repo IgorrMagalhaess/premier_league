@@ -1,6 +1,12 @@
-class Teams::PlayersController < ApplicationController
+class Team::PlayersController < ApplicationController
    def index
       @team = Team.find(params[:id])
+      @players = @team.players
+
+      if params[:sort]
+         @players = @players.sort_players(params[:sort])
+         # require 'pry';binding.pry
+      end
    end
 
    def new

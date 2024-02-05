@@ -3,8 +3,10 @@
 <a href="/teams"><button type="button">Teams Index</button></a>
 <hr class="solid">
 
+<h4><%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?sort=alpha" %></h4>
+
 <h1><%= @team.name %>'s Players</h1>
-    <% @team.players.each do |player| %>
+    <% @players.each do |player| %>
         <h3><a href="/players/<%= player.id%>"><%= player.name %></a></h3>
         <ul>
             <li><p>Position: <%= player.position %></p></li>

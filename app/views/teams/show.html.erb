@@ -11,7 +11,7 @@
    <li><h3><a href="/teams/<%= @team.id %>/players">Number of Players</a>: <%= @count %></h3>
    <ul> 
       <% @team.players.each do |player| %>
-         <l1><p><%= player.name %></p></li>
+         <li><p><%= player.name %></p></li>
       <% end %>
    </ul>
 </ul>
