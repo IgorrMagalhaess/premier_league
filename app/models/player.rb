@@ -4,4 +4,8 @@ class Player < ApplicationRecord
    def self.player_count
       self.count
    end
+
+   def injuried?
+      self.injuried ? "Yes" : "No"
+   end
 end

@@ -1,11 +1,20 @@
-<a href="/teams"><button type="button">Team Index</button></a>
+<a href="/"><button type="button">Premier League Home</button></a>
 <a href="/players"><button type="button">Players Index</button></a>
 <a href="/teams"><button type="button">Teams Index</button></a>
+<hr class="solid">
 
-
-<h1>Players</h1>
+<h1>Players Index</h1>
+<br/>
 
 <% @players.each do |player| %>
-   <h3><a href="/players/<%= player.id %>"><%= player.name %></a></h3>
-   <p><%= player.position %></p><br/>
+   <h3><a href=<%= request.original_url + "/#{player.id}" %>><%= player.name %></a></h3>
+    <p>Entry created: <%= player.created_at %><p>
+    <ul>
+        <li><p>Team: <%= player.team.name %></p></li>
+        <li><p>Position: <%= player.position %></p></li>
+        <li><p>Jersey Number: <%= player.jersey_number %></p></li>
+        <li><p>Injuried: <%= player.injuried? %></p></li>
+    </ul>
+    <h4><a href=<%= request.original_url + "/#{player.id}/edit" %>>Edit <%= player.name %></a></h4>
+    <br/>
 <% end %>

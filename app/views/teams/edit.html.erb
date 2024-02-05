@@ -1,22 +1,28 @@
-<form action="/teams/<%= @team.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH" />
-  <h1>Edit Team</h1>
-  <p>
+<a href="/"><button type="button">Premier League Home</button></a>
+<a href="/players"><button type="button">Players Index</button></a>
+<a href="/teams"><button type="button">Teams Index</button></a>
+<hr class="solid">
+
+<h1>Edit <%= "#{@team.name}" %></h1>
+
+<form action=<%= "/teams/#{@team.id}" %>  method="post">
+    <input name="_method" type="hidden" value="patch" />
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" value="<%= @team.name %>">
-  </p>
-  <p>
+    </p>
+    <p>
     <label for="state">State:</label>
     <input type="text" id="state" name="state" value="<%= @team.state %>">
-  </p>
-  <p>
+    </p>
+    <p>
     <label for="champ_position">Position:</label>
     <input type="text" id="champ_position" name="champ_position" value="<%= @team.champ_position %>">
-  </p>
-  <p>
+    </p>
+    <p>
     <label for="hiring_players">Hiring:</label>
     <input type="text" id="hiring_players" name="hiring_players" value="<%= @team.hiring_players %>">
-  </p>
-  <input type="submit" value="Submit">
-</form>
+     </p>
+    <button type="submit" name="update_team">Update Team</button></form>
+

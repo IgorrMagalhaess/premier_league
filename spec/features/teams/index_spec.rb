@@ -50,7 +50,7 @@ RSpec.describe "Teams index page", type: :feature do
 
       click_on "New Team", match: :first
 
-      expect(page).to have_button 'Submit'
+      expect(page).to have_button 'Add Team'
       expect(page).to have_content 'New Team'
       expect(page).to have_content 'Name:'
       expect(page).to have_content 'State:'

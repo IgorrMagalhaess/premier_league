@@ -11,10 +11,11 @@ RSpec.describe 'Edit team page', type: :feature do
     fill_in 'Position', with: 2
     fill_in 'Hiring', with: 'true'
 
-    click_button 'Submit'
+    click_button 'Update Team'
 
     expect(page).to have_content 'Teams'
     expect(page).to have_content 'Arsenal FC'
     expect(page).to have_content 'Position: 2'
+    expect(page).to have_content 'On the Market: Yes'
   end
 end

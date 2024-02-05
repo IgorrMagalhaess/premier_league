@@ -58,4 +58,10 @@ RSpec.describe 'Team Players page', type: :feature do
       expect(page).to have_content(liverpool.name)
       expect(page).to have_content(tottenham.name)
    end
+
+   it 'has a link to add new players to that team' do
+      visit "/teams/#{@man_city.id}/players"
+
+      expect(page).to have_button "Create New Player"
+   end
 end
