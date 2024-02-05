@@ -4,12 +4,12 @@ RSpec.describe "Teams new page", type: :feature do
    it 'has a form to submit a new team' do
       visit "/teams/new"
 
-      fill_in 'Name', with: 'Arsenal FC'
-      fill_in 'State', with: 'Holloway'
-      fill_in 'Position', with: 2
-      fill_in 'Hiring', with: 'true'
+      fill_in 'name', with: 'Arsenal FC'
+      fill_in 'state', with: 'Holloway'
+      fill_in 'position', with: 2
+      fill_in 'hiring_players', with: 'true'
 
-      click_button 'Submit'
+      click_button 'Create Team'
 
       expect(page).to have_content 'Teams'
       expect(page).to have_content 'Arsenal FC'

@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
    def index
       players = Player.all
-      @players = Player.order(created_at: :desc)
+      @players = Player.order(created_at: :desc).where(injuried: false)
    end
 
    def show

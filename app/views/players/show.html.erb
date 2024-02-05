@@ -11,4 +11,8 @@
       </li><h3>Injuried: <%= @player.injuried? %></h3></li>
    </ul>
    <h4><a href=<%= "#{@player.id}/edit" %> title="Edit player">Edit <%= @player.name %></a></h4>
-   <h4><%= link_to "Delete #{@player.name}", "/players/#{@player.id}", method: :delete %></h4>
+   <form action="/players/<%= @player.id %>" method="POST" style="display: inline-block;">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="action-link"/>
+</form>

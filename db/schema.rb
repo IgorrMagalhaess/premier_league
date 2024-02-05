@@ -34,5 +34,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_012544) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "players", "teams"
+  add_foreign_key "players", "teams", on_delete: :cascade
 end

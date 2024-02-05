@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
-   has_many :players
+   has_many :players, dependent: :destroy
    validates_presence_of :name
 
    def self.ordered_teams
@@ -10,7 +10,7 @@ class Team < ApplicationRecord
       self.hiring_players ? "Yes" : "No"
    end
 
-   def self.sort(type)
+   def sort(type)
       if type == "alpha"
          Team.order(name: ASC)
       end

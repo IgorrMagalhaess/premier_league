@@ -5,15 +5,15 @@
 
 <h1>Add New Team</h1>
 
-<form action="/teams" method="post">
-
-<p><label for="name">Name:</label>
-<input type="text" name="name" id="name"></p>
-<p><label for="position">Position:</label>
-<input type="text" name="position" id="position"></p>
-<p><label for="state">State:</label>
-<input type="text" name="state" id="state"></p>
-<p><label for="hiring_players">Hiring:</label>
-<input type="text" name="hiring_players" id="hiring_players"></p>
-<p><input type='submit' name="create_developer" value="Create Developer"/></p>
+<form action=<%= "/teams" %>  method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>Team Name:</p>
+    <input type='text' name='name' /><br/>
+    <p>Team State:</p>
+    <input type='text' name='state'/><br/>
+    <p>Premier League Position:</p>
+    <input type='number' name='champ_position'/><br/>
+    <p>Hiring:</p>
+    <input type='text' name='hiring_players' placeholder='e.g. true or false'/><br/><br>
+    <button type="submit" name="create_team">Add Team</button></form>
 </form>

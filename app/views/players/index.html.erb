@@ -16,6 +16,5 @@
         <li><p>Injuried: <%= player.injuried? %></p></li>
     </ul>
     <h4><a href=<%= request.original_url + "/#{player.id}/edit" %>>Edit <%= player.name %></a></h4>
-    <h4><%= link_to "Delete #{player.name}", "/players/#{player.id}", method: :delete %></h4>
     <br/>
 <% end %>

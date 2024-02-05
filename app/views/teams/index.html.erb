@@ -7,6 +7,8 @@
 
 <h1>Premier League Teams</h1>
 
+<a href="/teams/new"><button type="button">New Team</button></a>
+
 <% @teams.each do |team| %>
    <h3><a href=<%= request.original_url + "/#{team.id}" %>><%= team.name %></a></h3>
    <p>Created at: <%= team.created_at %></p>
@@ -14,8 +16,12 @@
       <li><p>Premier League Position: <%= team.champ_position %></p></li>
       <li><p>On the Market: <%= team.hiring? %></p></li>
    </ul>
-   <h4><a href=<%= request.original_url + "/#{team.id}/edit" %>>Edit <%= team.name %></a></h4>
-   <h4><%= link_to "Delete #{team.name}", "/teams/#{team.id}", method: :delete %></h4>
-   
+      <a href="/teams/<%= team.id %>/edit" class="action-link">Edit</a>
+      <form action="/teams/<%= team.id %>" method="POST" style="display: inline-block;">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="action-link"/>
+      </form>
+      
    <br/>
 <% end %>

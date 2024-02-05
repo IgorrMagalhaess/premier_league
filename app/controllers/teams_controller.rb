@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
    def create
       team = Team.create(team_params)
       
-      redirect_to "/teams/#{team.id}"
+      redirect_to "/teams"
    end
 
    def edit
@@ -34,8 +34,7 @@ class TeamsController < ApplicationController
     end
 
     def destroy
-      team = Team.find(params[:id])
-      team.destroy
+      Team.destroy(params[:id])
 
       redirect_to "/teams"
     end
