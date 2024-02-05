@@ -10,5 +10,9 @@ class Team < ApplicationRecord
       self.hiring_players ? "Yes" : "No"
    end
 
-   
+   def self.sort(type)
+      if type == "alpha"
+         Team.order(name: :ASC)
+      end
+   end
 end

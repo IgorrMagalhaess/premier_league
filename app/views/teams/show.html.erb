@@ -15,7 +15,7 @@
       <% end %>
    </ul>
 </ul>
-<h4><a href=<%= "#{@team.id}/edit" %> title: Edit <%= @team.name %></a></h4>
+<a href="/teams/<%= @team.id %>/edit" class="action-link">Update Team</a>
 <form action="/teams/<%= @team.id %>" method="POST" style="display: inline-block;">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="DELETE">
