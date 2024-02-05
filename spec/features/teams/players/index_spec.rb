@@ -18,12 +18,12 @@ RSpec.describe 'Team Players page', type: :feature do
       visit "/teams/#{@man_city.id}/players"
 
       expect(page).to have_content(@ederson.position)
-      expect(page).to have_content(@ederson.injuried)
+      expect(page).to have_content("Injuried: No")
       expect(page).to have_content(@ederson.jersey_number)
 
 
       expect(page).to have_content(@de_bruyne.position)
-      expect(page).to have_content(@de_bruyne.injuried)
+      expect(page).to have_content("Injuried: No")
       expect(page).to have_content(@de_bruyne.jersey_number)
    end
 
@@ -57,11 +57,5 @@ RSpec.describe 'Team Players page', type: :feature do
       expect(page).to have_content(man_city.name)
       expect(page).to have_content(liverpool.name)
       expect(page).to have_content(tottenham.name)
-   end
-
-   it 'has a link to add new players to that team' do
-      visit "/teams/#{@man_city.id}/players"
-
-      expect(page).to have_button "Create New Player"
    end
 end

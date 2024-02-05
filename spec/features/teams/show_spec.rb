@@ -9,7 +9,7 @@ RSpec.describe "Team index page", type: :feature do
       expect(page).to have_content(man_city.name)
       expect(page).to have_content(man_city.state)
       expect(page).to have_content(man_city.champ_position)
-      expect(page).to have_content(man_city.hiring_players)
+      expect(page).to have_content("On the Market: No")
    end
 
    it "has a link to that teams players" do
@@ -17,7 +17,7 @@ RSpec.describe "Team index page", type: :feature do
 
       visit "/teams/#{man_city.id}"
 
-      click_on "Players"
+      click_on "Number of Players"
 
       expect(current_path).to eq("/teams/#{man_city.id}/players")
    end
@@ -42,7 +42,7 @@ RSpec.describe "Team index page", type: :feature do
 
       visit "/teams/#{man_city.id}"
 
-      expect(page).to have_content("Players: 2")
+      expect(page).to have_content("Number of Players: 2")
    end
 
    it 'has a link to the teams index' do
@@ -61,14 +61,14 @@ RSpec.describe "Team index page", type: :feature do
       expect(page).to have_content(tottenham.name)
    end
 
-   it 'has a link to the teams index' do
+   it 'has a link to the players index' do
       man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
       ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
       de_bruyne = man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: false)
 
       visit "/teams/#{man_city.id}"
 
-      click_on "Players"
+      click_on "Players Index",match: :first
 
       expect(page).to have_content(man_city.name)
       expect(page).to have_content(ederson.name)
@@ -82,6 +82,6 @@ RSpec.describe "Team index page", type: :feature do
 
       visit "/teams/#{man_city.id}"
 
-      expect(page).to have_button("Edit Team")
+      expect(page).to have_link("Update Team")
    end
 end

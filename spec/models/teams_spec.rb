@@ -14,4 +14,14 @@ describe Team, type: :model do
          expect(Team.ordered_teams).to eq([tottenham, liverpool, man_city])
       end
    end
+
+   describe '#sort' do
+      it 'sort the teams in alphabethical order' do
+         man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
+         liverpool = Team.create!(name: "Liverpool FC", state: "Liverpool", champ_position: 5, hiring_players: true)
+         tottenham = Team.create!(name: "Tottenham Hotspur FC", state: "Tottenham", champ_position: 8, hiring_players: true)
+
+         expect(Team.sort("alpha")).to eq([liverpool, man_city, tottenham])
+      end
+   end
 end

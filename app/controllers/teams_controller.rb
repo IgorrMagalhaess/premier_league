@@ -42,10 +42,4 @@ class TeamsController < ApplicationController
    def team_params
       params.permit(:name, :champ_position, :state, :hiring_players)
    end
-
-   def self.sort(type)
-      if type == "alpha"
-         Team.order(name: ASC)
-      end
-   end
 end
