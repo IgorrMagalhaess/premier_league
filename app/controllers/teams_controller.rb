@@ -1,10 +1,6 @@
 class TeamsController < ApplicationController
    def index
-      if params[:sort]
-         @teams = Team.sort(params[:sort])
-      else
-         @teams = Team.ordered_teams
-      end
+      @teams = Team.ordered_teams
    end
 
    def show

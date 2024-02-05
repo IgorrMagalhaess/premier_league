@@ -5,7 +5,6 @@ class Team::PlayersController < ApplicationController
 
       if params[:sort]
          @players = @players.sort_players(params[:sort])
-         # require 'pry';binding.pry
       end
    end
 
@@ -18,14 +17,7 @@ class Team::PlayersController < ApplicationController
       @team.players.create(player_params)
 
       redirect_to "/teams/#{@team.id}/players"
-   end
-
-   def sort
-      @team = Team.find(params[:id])
-      @players = @team.players.order(:name)
-      render :index
-    end
-    
+   end    
 
    def player_params
       params.permit(:name, :position, :jersey_number, :injuried, :team_id)

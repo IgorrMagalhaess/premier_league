@@ -5,6 +5,14 @@ class Player < ApplicationRecord
       self.count
    end
 
+   def self.ordered_players
+      self.order(created_at: :desc)
+   end
+
+   def self.not_injuried
+      self.where(injuried: false)
+   end
+
    def injuried?
       self.injuried ? "Yes" : "No"
    end
