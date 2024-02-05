@@ -6,10 +6,10 @@ RSpec.describe "Teams new page", type: :feature do
 
       fill_in 'name', with: 'Arsenal FC'
       fill_in 'state', with: 'Holloway'
-      fill_in 'position', with: 2
+      fill_in 'champ_position', with: 2
       fill_in 'hiring_players', with: 'true'
 
-      click_button 'Create Team'
+      click_button 'Add Team'
 
       expect(page).to have_content 'Teams'
       expect(page).to have_content 'Arsenal FC'
