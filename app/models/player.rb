@@ -23,11 +23,7 @@ class Player < ApplicationRecord
    end
 
    def self.sort_players(type)
-      if type == "alpha"
-         Player.order(name: :ASC)
-      else
-         all
-      end
+      type == "alpha" ? Player.order(name: :ASC) : all
    end
 
    def self.filter_players(selected_position)

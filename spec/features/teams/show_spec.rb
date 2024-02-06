@@ -61,18 +61,19 @@ RSpec.describe "Team index page", type: :feature do
       expect(page).to have_content(tottenham.name)
    end
 
-   it 'has a link to the players index' do
+   it 'has a button to delete that team' do
       man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
       ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
       de_bruyne = man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: false)
+      tottenham = Team.create!(name: "Tottenham Hotspur FC", state: "Tottenham", champ_position: 8, hiring_players: true)
 
       visit "/teams/#{man_city.id}"
 
-      click_on "Players Index",match: :first
+      click_on "Delete",match: :first
 
-      expect(page).to have_content(man_city.name)
-      expect(page).to have_content(ederson.name)
-      expect(page).to have_content(de_bruyne.name)
+      expect(page).to_not have_content(man_city.name)
+      expect(page).to have_content(tottenham.name)
+      expect(page).to have_content(tottenham.created_at)
    end
 
    it 'has a link to update that team' do

@@ -49,7 +49,9 @@ RSpec.describe 'Team Players page', type: :feature do
       liverpool = Team.create!(name: "Liverpool FC", state: "Liverpool", champ_position: 5, hiring_players: true)
       tottenham = Team.create!(name: "Tottenham Hotspur FC", state: "Tottenham", champ_position: 8, hiring_players: true)
 
-      visit "/players/#{ederson.id}"
+      visit "/teams/#{@man_city.id}/players"
+
+      expect(page).to have_content('Teams Index')
 
       click_on "Teams Index", match: :first
 
@@ -57,5 +59,47 @@ RSpec.describe 'Team Players page', type: :feature do
       expect(page).to have_content(man_city.name)
       expect(page).to have_content(liverpool.name)
       expect(page).to have_content(tottenham.name)
+   end
+
+   it 'has a link to sort the players alphabetically' do
+      haaland = @man_city.players.create!(name: "Haaland", position: "Forward", jersey_number: 9, injuried: false)
+
+      visit "/teams/#{@man_city.id}/players"
+
+      expect(page).to have_link('Sort Alphabetically')
+
+      click_on "Sort Alphabetically"
+
+      this = @ederson.name
+      that = haaland.name
+
+      expect(this).to appear_before(that)
+   end
+
+   it 'has a selector to filter players by position' do
+      haaland = @man_city.players.create!(name: "Haaland", position: "Forward", jersey_number: 9, injuried: false)
+
+      visit "/teams/#{@man_city.id}/players"
+
+      select("Forward", from: "Select Position")
+
+      click_on "Filter Players by Position"
+
+      expect(page).to have_content(haaland.name)
+      expect(page).to_not have_content(@ederson.name)
+      expect(page).to_not have_content(@de_bruyne.name)
+   end
+
+   it 'has link to Add players to the team' do
+      visit "/teams/#{@man_city.id}/players"
+
+      click_on "Add Player to #{@man_city.name}"
+
+      expect(page).to have_content("Add Player to #{@man_city.name}")
+      expect(page).to have_content("Player Name:")
+      expect(page).to have_content("Player Position:")
+      expect(page).to have_content("Jersey Number:")
+      expect(page).to have_content("Injuried:")
+      expect(page).to have_button("Add Player")
    end
 end
