@@ -57,4 +57,29 @@ RSpec.describe "Teams index page", type: :feature do
       expect(page).to have_content 'Position:'
       expect(page).to have_content 'Hiring:'
    end
+
+   it 'has a link to edit the Team record' do
+      visit '/teams'
+
+      click_on "Edit", match: :first
+
+      expect(page).to have_content 'Edit'
+      expect(page).to have_content 'Name:'
+      expect(page).to have_content 'State:'
+      expect(page).to have_content 'Position:'
+      expect(page).to have_content 'Hiring:'
+      expect(page).to have_button 'Update Team'
+   end
+
+   it 'has a link to delete the Team record' do
+      visit '/teams'
+
+      click_on "Delete", match: :first
+
+      expect(page).to_not have_content(@tottenham.name)
+      expect(page).to_not have_content("Premier League Position: 8")
+      expect(page).to have_content(@liverpool.name)
+      expect(page).to have_content(@man_city.name)
+      expect(page).to have_content("Premier League Teams")
+   end
 end
