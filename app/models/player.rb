@@ -2,19 +2,19 @@ class Player < ApplicationRecord
    belongs_to :team
 
    def self.player_count
-      self.count
+      count
    end
 
    def self.ordered_players
-      self.order(created_at: :desc)
+      order(created_at: :desc)
    end
 
    def self.not_injuried
-      self.where(injuried: false)
+      where(injuried: false)
    end
 
    def injuried?
-      self.injuried ? "Yes" : "No"
+      injuried ? "Yes" : "No"
    end
 
    def self.available_positions
@@ -27,6 +27,10 @@ class Player < ApplicationRecord
    end
 
    def self.filter_players(selected_position)
-      self.where(position: selected_position)
+      where(position: selected_position)
+   end
+
+   def self.search_players(name)
+      where("name ILIKE ?", "%#{name}%")
    end
 end

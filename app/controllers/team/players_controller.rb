@@ -24,6 +24,6 @@ class Team::PlayersController < ApplicationController
 
 private
    def player_params
-      params.permit(:name, :position, :jersey_number, :injuried, :team_id)
+      params.permit(:name, :position, :jersey_number, :injuried, :team_id, :sort, :selected_position)
    end
 end

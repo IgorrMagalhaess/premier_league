@@ -89,4 +89,15 @@ describe Player, type: :model do
          expect(Player.filter_players("Goalkeeper")).to eq([ederson])
       end
    end
+
+   describe '#search_players' do
+      it 'return only the players whose names are partial match' do
+         man_city = Team.create!(name: "Manchester City FC", state: "Manchester", champ_position: 1, hiring_players: false)
+         ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: true)
+         de_bruyne = man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: true)
+         haaland = man_city.players.create!(name: "Haaland", position: "Forward", jersey_number: 9, injuried: false)
+
+         expect(Player.search_players('de')).to eq([ederson, de_bruyne])
+      end
+   end
 end

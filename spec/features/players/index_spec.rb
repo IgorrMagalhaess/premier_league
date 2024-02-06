@@ -72,4 +72,24 @@ RSpec.describe 'the players show page', type: :feature do
       expect(page).to have_content(ederson.jersey_number)
       expect(page).to have_content(de_bruyne.jersey_number)
    end
+
+
+   it 'has a link to search by name' do
+      man_city = Team.create!(name: "Manchester City FC", state: "Manchester", champ_position: 1, hiring_players: false)
+      ederson = man_city.players.create!(name: "Ederson", position: "Goalkeeper", jersey_number: 31, injuried: false)
+      de_bruyne = man_city.players.create!(name: "Kevin De Bruyne", position: "Midfielder", jersey_number: 17, injuried: false)
+      haaland = man_city.players.create!(name: "Haaland", position: "Forward", jersey_number: 9, injuried: false)
+
+      visit "/players"
+
+      fill_in "Search", with: "#{ederson.name}"
+
+      click_on "Search"
+
+      expect(page).to_not have_content(de_bruyne.name)
+      expect(page).to_not have_content(haaland.name)
+      expect(page).to have_content(ederson.name)
+      expect(page).to have_content(ederson.jersey_number)
+      expect(page).to have_content(ederson.position)
+   end
 end

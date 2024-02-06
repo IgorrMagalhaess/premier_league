@@ -2,6 +2,10 @@ class PlayersController < ApplicationController
    def index
       players = Player.all
       @players = Player.ordered_players.not_injuried
+
+      if params[:search]
+         @players = @players.search_players(params[:search])
+      end
    end
 
    def show
@@ -32,6 +36,6 @@ class PlayersController < ApplicationController
 
 private
    def player_params
-      params.permit(:name, :position, :jersey_number, :injuried)
+      params.permit(:name, :position, :jersey_number, :injuried, :search)
    end
 end
