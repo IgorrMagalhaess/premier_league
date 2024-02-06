@@ -17,9 +17,20 @@ class Player < ApplicationRecord
       self.injuried ? "Yes" : "No"
    end
 
+   def self.available_positions
+      @players = self.distinct.pluck(:position)
+      @all_positions = @players.uniq
+   end
+
    def self.sort_players(type)
       if type == "alpha"
          Player.order(name: :ASC)
+      else
+         all
       end
+   end
+
+   def self.filter_players(selected_position)
+      self.where(position: selected_position)
    end
 end

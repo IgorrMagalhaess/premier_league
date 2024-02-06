@@ -4,6 +4,13 @@
 <hr class="solid">
 
 <h4><%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?sort=alpha" %></h4>
+<%= form_with url: "/teams/#{@team.id}/players?sort=threshold", method: :get do |form| %>
+  <%= form.label :selected_position, "Select Position:" %>
+  <%= form.select :selected_position, options_for_select(@available_positions), prompt: "Select Position" %>
+
+  <%= form.submit "Filter Players by Position" %>
+<% end %>
+
 
 <h1><%= @team.name %>'s Players</h1>
     <% @players.each do |player| %>

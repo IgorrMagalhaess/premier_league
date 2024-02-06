@@ -2,9 +2,12 @@ class Team::PlayersController < ApplicationController
    def index
       @team = Team.find(params[:id])
       @players = @team.players
-
+      @available_positions = @players.available_positions
+      
       if params[:sort]
          @players = @players.sort_players(params[:sort])
+      elsif params[:selected_position]
+         @players = @players.filter_players(params[:selected_position])
       end
    end
 
