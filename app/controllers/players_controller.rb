@@ -12,12 +12,6 @@ class PlayersController < ApplicationController
 
    end
 
-   def create 
-      player = Player.create(player_params)
-
-      redirect_to "/players"
-   end
-
    def edit
       @player = Player.find(params[:id])
    end
