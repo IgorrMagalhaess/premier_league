@@ -9,4 +9,8 @@ class Team < ApplicationRecord
    def hiring?
       self.hiring_players ? "Yes" : "No"
    end
+
+   def self.search_teams(name)
+      where("name ILIKE ?", "%#{name}%")
+   end
 end

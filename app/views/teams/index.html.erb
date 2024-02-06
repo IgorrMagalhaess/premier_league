@@ -3,7 +3,11 @@
 <a href="/teams"><button type="button">Teams Index</button></a>
 <hr class="solid">
 
-
+<%= form_with url: "/teams?search", method: :get do |form| %>
+  <%= form.label :search, "Search Team by Name: " %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= form.submit "Search" %>
+<% end %>
 
 <h1>Premier League Teams</h1>
 

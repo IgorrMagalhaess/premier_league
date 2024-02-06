@@ -82,4 +82,16 @@ RSpec.describe "Teams index page", type: :feature do
       expect(page).to have_content(@man_city.name)
       expect(page).to have_content("Premier League Teams")
    end
+
+   it 'has a link to search by name' do
+      visit "/teams"
+
+      fill_in "Search", with: "#{@liverpool.name}"
+
+      click_on "Search"
+
+      expect(page).to_not have_content(@man_city.name)
+      expect(page).to_not have_content(@tottenham.name)
+      expect(page).to have_content(@liverpool.name)
+   end
 end

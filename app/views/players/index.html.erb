@@ -3,7 +3,7 @@
 <a href="/teams"><button type="button">Teams Index</button></a>
 <hr class="solid">
 
-<%= form_with url: "/players?sort=threshold", method: :get do |form| %>
+<%= form_with url: "/players?search", method: :get do |form| %>
   <%= form.label :search, "Search Player by Name: " %>
   <%= text_field_tag(:search, params[:search]) %>
   <%= form.submit "Search" %>

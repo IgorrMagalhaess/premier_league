@@ -28,4 +28,14 @@ describe Team, type: :model do
          expect(man_city.hiring?).to eq("Yes")
       end
    end
+
+   describe '#search_teams' do
+      it 'return only the teams whose names are partial or complete match' do
+         man_city = Team.create!(name: "Manchester City", state: "Manchester", champ_position: 3, hiring_players: false)
+         liverpool = Team.create!(name: "Liverpool FC", state: "Liverpool", champ_position: 5, hiring_players: true)
+         tottenham = Team.create!(name: "Tottenham Hotspur FC", state: "Tottenham", champ_position: 8, hiring_players: true)
+
+         expect(Team.search_teams("FC")).to eq([liverpool, tottenham])
+      end
+   end
 end
