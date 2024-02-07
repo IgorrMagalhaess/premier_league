@@ -13,7 +13,7 @@
 <br/>
 
 <% @players.each do |player| %>
-   <h3><a href=<%= request.original_url + "/#{player.id}" %>><%= player.name %></a></h3>
+   <h3><a href=<%= "/players/#{player.id}" %>><%= player.name %></a></h3>
     <p>Entry created: <%= player.created_at %><p>
     <ul>
         <li><p>Team: <%= player.team.name %></p></li>
