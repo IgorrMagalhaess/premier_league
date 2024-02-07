@@ -1,9 +1,11 @@
 class TeamsController < ApplicationController
    def index
-      @teams = Team.ordered_teams
-      # require 'pry';binding.pry
-      if params[:search]
-         @teams = @teams.search_teams(params[:search])
+      if params[:sort]
+         @teams = Team.sort_teams(params[:sort])
+      elsif params[:search]
+         @teams = Team.search_teams(params[:search])
+      else
+         @teams = Team.ordered_teams
       end
    end
 

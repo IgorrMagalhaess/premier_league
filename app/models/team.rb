@@ -13,4 +13,8 @@ class Team < ApplicationRecord
    def self.search_teams(name)
       where("name ILIKE ?", "%#{name}%")
    end
+
+   def self.sort_teams(type)
+      type == "alpha" ? Team.order(name: :asc) : all
+   end
 end

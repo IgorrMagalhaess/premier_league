@@ -1,10 +1,11 @@
 class PlayersController < ApplicationController
    def index
-      players = Player.all
-      @players = Player.ordered_players.not_injuried
-
       if params[:search]
          @players = @players.search_players(params[:search])
+      elsif
+         @players = Player.sort_players(params[:sort])
+      else
+         @players = Player.ordered_players.not_injuried
       end
    end
 
